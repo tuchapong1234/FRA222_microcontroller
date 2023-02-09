@@ -1,0 +1,11 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:xyz Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Week2_BasicIOAndButtonMatrix Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:BlinkLed Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Endcoder Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Week2_BasicIO Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Week3_ADC Debug
+eclipse.preferences.version=1
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:BlinkLed\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:BlinkLed\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Endcoder\ Debug/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Week2_BasicIO\ Debug/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:xyz\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:xyz\ Debug/activeLaunchTarget=null\:---

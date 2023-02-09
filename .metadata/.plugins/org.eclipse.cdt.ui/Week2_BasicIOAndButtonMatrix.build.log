@@ -1,0 +1,10 @@
+01:55:01 **** Incremental Build of configuration Debug for project Week2_BasicIOAndButtonMatrix ****
+make -j16 all 
+arm-none-eabi-size   Week2_BasicIOAndButtonMatrix.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7796	     20	   1636	   9452	   24ec	Week2_BasicIOAndButtonMatrix.elf
+Finished building: default.size.stdout
+ 
+
+01:55:01 Build Finished. 0 errors, 0 warnings. (took 217ms)
+
