@@ -6,18 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Data"/>
+		<item key="selection" value="ADC_TEMP_Covert"/>
 		<list key="findhistory">
+			<item value="ADC_TEMP_Covert"/>
+			<item value="Encoder"/>
+			<item value="e_integral"/>
+			<item value="e_prev"/>
+			<item value="eprev"/>
+			<item value="e"/>
+			<item value="e_diff"/>
+			<item value="HAL_TIM_Encoder_Start_IT"/>
+			<item value="HAL_TIM_IC_CaptureCallback"/>
+			<item value="while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6) == GPIO_PIN_SET){}"/>
+			<item value="capture"/>
+			<item value="HAL_GPIO_TogglePin"/>
 			<item value="Data"/>
 			<item value="ADC_Config"/>
 			<item value="L1.Current"/>
-			<item value="HAL_TIM_Encoder_Start_IT"/>
-			<item value="frequency"/>
-			<item value="HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);"/>
-			<item value="GPIO_PIN_5"/>
-			<item value="ButtonMatrix"/>
-			<item value="Current"/>
-			<item value="Currebt"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

@@ -1,10 +1,10 @@
-21:53:54 **** Incremental Build of configuration Debug for project Week2_BasicIO ****
+15:31:08 **** Incremental Build of configuration Debug for project Week2_BasicIO ****
 make -j16 all 
 arm-none-eabi-size   Week2_BasicIO.elf 
    text	   data	    bss	    dec	    hex	filename
-   8644	     96	   1688	  10428	   28bc	Week2_BasicIO.elf
+   8656	     96	   1688	  10440	   28c8	Week2_BasicIO.elf
 Finished building: default.size.stdout
  
 
-21:53:54 Build Finished. 0 errors, 0 warnings. (took 233ms)
+15:31:08 Build Finished. 0 errors, 0 warnings. (took 249ms)
 

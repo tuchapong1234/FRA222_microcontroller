@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "string.h"
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,6 +48,28 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
+struct encoder
+{
+	int A_current;
+	int A_last;
+	int B_current;
+	int B_last;
+};
+
+struct encoder AB;
+
+uint16_t pos=0;
+
+uint16_t target = 0;
+int16_t e = 0;
+int16_t e_prev = 0;
+int16_t e_integral =0;
+int16_t e_diff = 0;
+
+Kp = 0;
+Ki = 0;
+Kd = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -65,10 +88,22 @@ static void MX_TIM2_Init(void);
 
 uint32_t counter = 0;
 
+int16_t count = 0;
+
+int16_t position = 0;
+
+int speed = 0;
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
 	counter = __HAL_TIM_GET_COUNTER(htim);
+
+	count = (int16_t)counter;
+
+	position = count/4;
 }
+//{
+//	counter = __HAL_TIM_GET_COUNTER(htim);
+//}
 //uint16_t pwmData[10];
 //uint32_t ICValue = 0;
 //uint32_t Frequency = 0;
@@ -87,6 +122,8 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 //		}
 //	}
 //}
+
+char TxBuffer[30];
 
 /* USER CODE END 0 */
 
@@ -132,7 +169,7 @@ int main(void)
 //  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 //  TIM1 -> CCR1 = 225;
 
-//  TIM1 ->CCR1 = 70;
+  TIM1 ->CCR1 = 0;
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 //
 //  pwmData[0] = 10;
@@ -156,11 +193,68 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  htim1.Instance -> CCR1 = 10;
-	  HAL_Delay(1000);
+//	  htim1.Instance -> CCR1 = 10;
+//	  HAL_Delay(1000);
+//
+//	  htim1.Instance -> CCR1 = 60;
+//	  HAL_Delay(1000);
 
-	  htim1.Instance -> CCR1 = 60;
-	  HAL_Delay(1000);
+
+//	  e = target - position;
+//
+//	  e_integral += e*dt;
+//
+//	  e_diff = (e - e_prev)/dt;
+//
+//	  pwm = Kp*e + Ki*e_integral + Kd*e_prev;
+//
+//	  e_prev = e;
+
+	  sprintf(TxBuffer, "%d\r\n", position);
+	  HAL_UART_Transmit(&huart2, (uint8_t *) TxBuffer, 30, HAL_MAX_DELAY);
+
+
+
+
+	  //Read phase A and B
+
+//	  AB.A_current = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
+//	  AB.B_current = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
+//
+//	  if (AB.A_current == 1 && AB.A_last ==0 )
+//	  {
+//		  if(AB.B_current == 1)
+//		  {
+//			  pos++;
+//		  }
+//		  else pos--;
+//	  }
+//	  AB.A_last = AB.A_current;
+
+	  //Read phase A and B 2
+
+//	  if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6) == GPIO_PIN_RESET)
+//	  {
+//		  if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7) == GPIO_PIN_RESET)
+//		  {
+//			  while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7) == GPIO_PIN_RESET){};
+//			  pos++;
+//			  while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6) == GPIO_PIN_RESET){};
+//			  HAL_Delay(10);
+//		  }
+//
+//		  if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7) == GPIO_PIN_SET)
+//		  {
+//			  while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7) == GPIO_PIN_SET){};
+//			  pos--;
+//			  while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6) == GPIO_PIN_RESET){};
+//			  while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7) == GPIO_PIN_RESET){};
+//			  HAL_Delay(10);
+//		  }
+//
+//	  }
+
+
   }
   /* USER CODE END 3 */
 }
@@ -413,6 +507,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PA6 PA7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 }
 

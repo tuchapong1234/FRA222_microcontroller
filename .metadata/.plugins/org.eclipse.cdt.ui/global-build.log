@@ -1,21 +1,441 @@
-12:17:44 **** Incremental Build of configuration Debug for project Week3_ADC ****
+17:23:59 **** Build of configuration Debug for project Week4_InterruotandDMA ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Week3_ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week3_ADC\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week3_ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Week3_ADC.elf
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:341:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  341 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
  
-arm-none-eabi-size   Week3_ADC.elf 
-arm-none-eabi-objdump -h -S  Week3_ADC.elf  > "Week3_ADC.list"
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
    text	   data	    bss	    dec	    hex	filename
-  10156	     20	   1772	  11948	   2eac	Week3_ADC.elf
+  15196	     20	   2008	  17224	   4348	Week4_InterruotandDMA.elf
 Finished building: default.size.stdout
  
-Finished building: Week3_ADC.list
+Finished building: Week4_InterruotandDMA.list
  
-12:17:47 **** Incremental Build of configuration Debug for project Week3_ADC ****
+17:25:48 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
 make -j16 all 
-arm-none-eabi-size   Week3_ADC.elf 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
    text	   data	    bss	    dec	    hex	filename
-  10156	     20	   1772	  11948	   2eac	Week3_ADC.elf
+  15196	     20	   2008	  17224	   4348	Week4_InterruotandDMA.elf
 Finished building: default.size.stdout
+ 
+17:28:04 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15200	     20	   2008	  17228	   434c	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+17:30:50 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15224	     20	   2008	  17252	   4364	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+17:35:18 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15224	     20	   2008	  17252	   4364	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+17:48:18 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15232	     20	   1964	  17216	   4340	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+17:48:34 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15232	     20	   1964	  17216	   4340	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+17:49:48 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15232	     20	   1964	  17216	   4340	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+17:53:24 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15248	     20	   1964	  17232	   4350	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+17:55:18 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15240	     20	   1964	  17224	   4348	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+17:56:35 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15256	     20	   1964	  17240	   4358	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+19:05:07 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15276	     20	   1964	  17260	   436c	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+19:08:31 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15284	     20	   1964	  17268	   4374	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+19:09:48 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:343:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  343 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15288	     20	   1964	  17272	   4378	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+19:20:08 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:347:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  347 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15324	     20	   1860	  17204	   4334	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+19:22:29 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:347:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  347 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15340	     20	   1860	  17220	   4344	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
+ 
+19:25:31 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15340	     20	   1860	  17220	   4344	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+19:50:31 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15340	     20	   1860	  17220	   4344	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+19:54:27 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15340	     20	   1860	  17220	   4344	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+19:54:35 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15340	     20	   1860	  17220	   4344	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+19:58:26 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15340	     20	   1860	  17220	   4344	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+16:52:05 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15340	     20	   1860	  17220	   4344	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+17:02:33 **** Incremental Build of configuration Debug for project Week4_InterruotandDMA ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:352:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  352 |   HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+      |                             ^~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:594:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  594 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Week4_InterruotandDMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week4_InterruotandDMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week4_InterruotandDMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Week4_InterruotandDMA.elf
+ 
+arm-none-eabi-size   Week4_InterruotandDMA.elf 
+arm-none-eabi-objdump -h -S  Week4_InterruotandDMA.elf  > "Week4_InterruotandDMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  15372	     20	   1868	  17260	   436c	Week4_InterruotandDMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Week4_InterruotandDMA.list
  
