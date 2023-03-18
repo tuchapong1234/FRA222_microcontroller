@@ -1,10 +1,12 @@
-00:23:07 **** Build of configuration Debug for project xyz ****
+17:41:41 **** Build of configuration Debug for project xyz ****
 make -j16 all 
-arm-none-eabi-size   xyz.elf 
-   text	   data	    bss	    dec	    hex	filename
-   7760	     20	   1636	   9416	   24c8	xyz.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:76:3: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'HAL_Init'
+   76 |   HAL_Init();
+      |   ^~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
 
-00:23:07 Build Finished. 0 errors, 0 warnings. (took 310ms)
+17:41:42 Build Failed. 2 errors, 0 warnings. (took 404ms)
 

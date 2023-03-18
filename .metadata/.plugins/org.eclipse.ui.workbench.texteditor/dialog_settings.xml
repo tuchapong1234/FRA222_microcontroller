@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="ADC_TEMP_Covert"/>
+		<item key="selection" value="e_integral"/>
 		<list key="findhistory">
-			<item value="ADC_TEMP_Covert"/>
-			<item value="Encoder"/>
 			<item value="e_integral"/>
+			<item value="PeriodElapsedCallback"/>
+			<item value="ADC_TEMP_Covert"/>
+			<item value="HAL_ADC_Start_IT "/>
+			<item value="dt"/>
+			<item value="position"/>
+			<item value=".Instance"/>
+			<item value="htim1.Instance"/>
+			<item value="HAL_TIM_PWM_Start"/>
+			<item value="HAL_TIM_PWM_DeInit"/>
+			<item value="HAL_TIM_PWM_ConfigChannel"/>
+			<item value="HAL_UART"/>
+			<item value="TxBuffer"/>
+			<item value="Encoder"/>
 			<item value="e_prev"/>
-			<item value="eprev"/>
-			<item value="e"/>
-			<item value="e_diff"/>
-			<item value="HAL_TIM_Encoder_Start_IT"/>
-			<item value="HAL_TIM_IC_CaptureCallback"/>
-			<item value="while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6) == GPIO_PIN_SET){}"/>
-			<item value="capture"/>
-			<item value="HAL_GPIO_TogglePin"/>
-			<item value="Data"/>
-			<item value="ADC_Config"/>
-			<item value="L1.Current"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -31,8 +31,8 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="1208"/>
 		<item key="DIALOG_Y_ORIGIN" value="205"/>
-		<item key="DIALOG_WIDTH" value="414"/>
-		<item key="DIALOG_HEIGHT" value="454"/>
-		<item key="DIALOG_FONT_NAME" value="1|Leelawadee UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Leelawadee UI"/>
+		<item key="DIALOG_WIDTH" value="322"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|Leelawadee UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|Leelawadee UI"/>
 	</section>
 </section>

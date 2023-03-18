@@ -350,6 +350,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 //		HAL_ADC_Start_IT(&hadc1);
 
 		HAL_ADC_Start_DMA(&hadc1, adcRawData, 20);
+//		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)buffer, 20);
 
 	}
 
@@ -371,13 +372,14 @@ void ADC_TEMP_Covert()
 		{
 			if (i % 2 == 1)
 			{
-				adc_convert += adcRawData[i]/3102.0*5000.0;
+
+				adc_convert += (adcRawData[i]/((2.5/3.3)*4096))*5000.0;
 
 			}
 			else
 			{
-				//temp_convert += adcRawData[i]*3.3/4095;
-				K_convert += (((adcRawData[i]*3.3/4095) - 0.76)/0.0025) + 298;
+				//temp_convert += adcRawData[i]*3.3/4096;
+				K_convert += (((adcRawData[i]*3.3/4096) - 0.76)/0.0025) + 298;
 			}
 
 		}

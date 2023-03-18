@@ -1,10 +1,10 @@
-21:49:11 **** Incremental Build of configuration Debug for project Endcoder ****
+23:16:06 **** Incremental Build of configuration Debug for project Endcoder ****
 make -j16 all 
 arm-none-eabi-size   Endcoder.elf 
    text	   data	    bss	    dec	    hex	filename
-  18272	    120	   1944	  20336	   4f70	Endcoder.elf
+  25868	    120	   1952	  27940	   6d24	Endcoder.elf
 Finished building: default.size.stdout
  
 
-21:49:12 Build Finished. 0 errors, 0 warnings. (took 339ms)
+23:16:06 Build Finished. 0 errors, 0 warnings. (took 243ms)
 
