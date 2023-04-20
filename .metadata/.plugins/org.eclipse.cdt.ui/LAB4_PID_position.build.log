@@ -1,10 +1,17 @@
-21:23:44 **** Incremental Build of configuration Debug for project LAB4_PID_position ****
+21:26:38 **** Incremental Build of configuration Debug for project LAB4_PID_position ****
 make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LAB4_PID_position.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\LAB4_PID_position\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB4_PID_position.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LAB4_PID_position.elf
+ 
 arm-none-eabi-size   LAB4_PID_position.elf 
+arm-none-eabi-objdump -h -S  LAB4_PID_position.elf  > "LAB4_PID_position.list"
    text	   data	    bss	    dec	    hex	filename
   16576	     24	   1888	  18488	   4838	LAB4_PID_position.elf
 Finished building: default.size.stdout
  
+Finished building: LAB4_PID_position.list
+ 
 
-21:23:44 Build Finished. 0 errors, 0 warnings. (took 247ms)
+21:26:38 Build Finished. 0 errors, 0 warnings. (took 766ms)
 
