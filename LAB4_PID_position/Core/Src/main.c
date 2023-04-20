@@ -50,8 +50,8 @@ UART_HandleTypeDef huart2;
 
 float e = 0;
 float e_integral = 0;
-uint16_t Kp = 1000;
-uint16_t Ki = 100;
+uint16_t Kp = 250;
+uint16_t Ki = 10;
 
 uint32_t duty = 0;
 int32_t duty_raw = 0;
@@ -59,6 +59,7 @@ uint32_t QEIReadRaw;
 uint16_t setpoint = 0;
 float theta;
 uint16_t count;
+uint8_t flag = 0;
 
 typedef struct _QEIStructure
 {
@@ -456,46 +457,45 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_5);
 	}
-
-	else if(htim == &htim4)
-	{
-
-	}
 }
 
 void PID()
 {
+	if((setpoint <= 10 && e >= -100 && e<0 && flag == 0) || (setpoint >= 35990 && e <= 100 && e>0 && flag == 0))
+	{
+		Kp = 50;
+		Ki = 5;
+		e_integral = 0;
+		flag = 1;
+	}
 
 	e = setpoint - theta;
 
-	if ( e <= 0.1 && e >= -0.1)
+	if ( e <= 1 && e >= -1)
 	{
 		e_integral = 0;
 		duty = 0;
+
+		Kp = 250;
+		Ki = 10;
+		flag = 0;
 	}
 	else
 	{
-		if ((duty_raw >= 9999 && e >= 0) || (duty_raw <= -9999 && e < 0))
+		if ((duty_raw >= 10000 && e >= 0) || (duty_raw <= -10000 && e < 0))
 		{
 			e_integral = 0;
 		}
 		e_integral += e*0.01;
 
-		if(setpoint == 0 || setpoint == 36000)
-		{
-			if((e <= 100 && e> 0) || (e >= -100 && e< 0))
-			{
-				duty_raw = Ki*e_integral;
-			}
-		}
-		else duty_raw = Kp*e + Ki*e_integral;
+		duty_raw = Kp*e + Ki*e_integral;
 
 		if(duty_raw >= 0) duty = duty_raw;
 		else duty = -duty_raw;
 
-		if(duty >= 9999)
+		if(duty >= 10000)
 		{
-			duty = 9999;
+			duty = 10000;
 		}
 	}
 
