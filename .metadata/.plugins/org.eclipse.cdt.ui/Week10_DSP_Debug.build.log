@@ -1,0 +1,10 @@
+10:30:49 **** Incremental Build of configuration Debug for project Week10_DSP_Debug ****
+make -j16 all 
+arm-none-eabi-size   Week10_DSP_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  10776	    100	   1940	  12816	   3210	Week10_DSP_Debug.elf
+Finished building: default.size.stdout
+ 
+
+10:30:49 Build Finished. 0 errors, 0 warnings. (took 249ms)
+

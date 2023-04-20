@@ -6,33 +6,33 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="e_integral"/>
+		<item key="selection" value="RPM_Calculate"/>
 		<list key="findhistory">
+			<item value="RPM_Calculate"/>
+			<item value="count"/>
+			<item value="HAL_TIM_PeriodElapsedCallback"/>
+			<item value="hal_tim_period"/>
+			<item value="QEIData"/>
+			<item value="HAL_TIM_Encoder"/>
+			<item value="TIM Encoder Interface Start"/>
+			<item value="IC_BUFFER_SIZE"/>
+			<item value="Set_Motor()"/>
+			<item value="Set_Motor();"/>
+			<item value="Set_Mode"/>
+			<item value="A"/>
 			<item value="e_integral"/>
 			<item value="PeriodElapsedCallback"/>
 			<item value="ADC_TEMP_Covert"/>
-			<item value="HAL_ADC_Start_IT "/>
-			<item value="dt"/>
-			<item value="position"/>
-			<item value=".Instance"/>
-			<item value="htim1.Instance"/>
-			<item value="HAL_TIM_PWM_Start"/>
-			<item value="HAL_TIM_PWM_DeInit"/>
-			<item value="HAL_TIM_PWM_ConfigChannel"/>
-			<item value="HAL_UART"/>
-			<item value="TxBuffer"/>
-			<item value="Encoder"/>
-			<item value="e_prev"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1208"/>
-		<item key="DIALOG_Y_ORIGIN" value="205"/>
-		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|Leelawadee UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|Leelawadee UI"/>
+		<item key="DIALOG_X_ORIGIN" value="1515"/>
+		<item key="DIALOG_Y_ORIGIN" value="324"/>
+		<item key="DIALOG_WIDTH" value="414"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Leelawadee UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Leelawadee UI"/>
 	</section>
 </section>
