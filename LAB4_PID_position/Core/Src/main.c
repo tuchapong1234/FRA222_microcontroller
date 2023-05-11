@@ -472,7 +472,7 @@ void PID()
 
 	e = setpoint - theta;
 
-	if ( e <= 1 && e >= -1)
+	if ( e <= 0.1 && e >= -0.1)
 	{
 		e_integral = 0;
 		duty = 0;

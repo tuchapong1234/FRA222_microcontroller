@@ -1,17 +1,10 @@
-11:57:45 **** Incremental Build of configuration Debug for project Week7_Timer ****
+03:21:24 **** Build of configuration Debug for project Week7_Timer ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Week7_Timer.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week7_Timer\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week7_Timer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Week7_Timer.elf
- 
 arm-none-eabi-size   Week7_Timer.elf 
-arm-none-eabi-objdump -h -S  Week7_Timer.elf  > "Week7_Timer.list"
    text	   data	    bss	    dec	    hex	filename
-  14796	     20	   1972	  16788	   4194	Week7_Timer.elf
+  16952	     20	   2044	  19016	   4a48	Week7_Timer.elf
 Finished building: default.size.stdout
  
-Finished building: Week7_Timer.list
- 
 
-11:57:46 Build Finished. 0 errors, 0 warnings. (took 609ms)
+03:21:25 Build Finished. 0 errors, 0 warnings. (took 219ms)
 

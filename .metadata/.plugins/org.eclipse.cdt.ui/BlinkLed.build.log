@@ -1,4 +1,4 @@
-01:06:57 **** Incremental Build of configuration Debug for project BlinkLed ****
+03:21:12 **** Build of configuration Debug for project BlinkLed ****
 make -j16 all 
 arm-none-eabi-size   BlinkLed.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size   BlinkLed.elf
 Finished building: default.size.stdout
  
 
-01:06:57 Build Finished. 0 errors, 0 warnings. (took 235ms)
+03:21:12 Build Finished. 0 errors, 0 warnings. (took 233ms)
 

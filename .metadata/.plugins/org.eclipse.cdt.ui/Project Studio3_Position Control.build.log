@@ -1,0 +1,10 @@
+03:21:19 **** Build of configuration Debug for project Project Studio3_Position Control ****
+make -j16 all 
+arm-none-eabi-size   Project\ Studio3_Position\ Control.elf 
+   text	   data	    bss	    dec	    hex	filename
+   9832	     20	   1708	  11560	   2d28	Project Studio3_Position Control.elf
+Finished building: default.size.stdout
+ 
+
+03:21:19 Build Finished. 0 errors, 0 warnings. (took 233ms)
+
