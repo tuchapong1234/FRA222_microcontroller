@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="mode_flag"/>
+		<item key="selection" value="stop_trapi"/>
 		<list key="findhistory">
+			<item value="stop_trapi"/>
 			<item value="mode_flag"/>
 			<item value="arr"/>
 			<item value="CCR"/>
@@ -22,7 +23,6 @@
 			<item value="Set_Motor()"/>
 			<item value="Set_Motor();"/>
 			<item value="Set_Mode"/>
-			<item value="A"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -31,8 +31,8 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="1515"/>
 		<item key="DIALOG_Y_ORIGIN" value="324"/>
-		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|Leelawadee UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Leelawadee UI"/>
+		<item key="DIALOG_WIDTH" value="414"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Leelawadee UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Leelawadee UI"/>
 	</section>
 </section>

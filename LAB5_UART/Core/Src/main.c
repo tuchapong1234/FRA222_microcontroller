@@ -147,14 +147,15 @@ int main(void)
 		  if(on_off == 1)
 		  {
 			  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-			  		  timestamp = timestamp + timestep/(freq*2);
+			  		  timestamp = timestamp + timestep/(freq*2.0);
 		  }
 		  else if(on_off == 0)
 		  {
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 		  }
-
 	  }
+
+	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
   }
   /* USER CODE END 3 */
 }
@@ -344,7 +345,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|LD2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -352,12 +353,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : LD2_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin;
+  /*Configure GPIO pins : PA0 LD2_Pin */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|LD2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 }
 
@@ -419,7 +420,10 @@ void select_mode(mode)
 	case 'a':
 		if(mode_flag == 0)
 		{
-			freq++;
+			if(freq < 65535)
+			{
+				freq++;
+			}
 			sprintf((char*)TxBuffer,"---LED Speed: %d Hz---\r\nMode_0:LED CONTROL\r\n  Please Select Option\r\n   a:Speed Up +1Hz\r\n   s:Speed Down -1Hz\r\n   d:On/off\r\n   x:back\r\n",freq);
 			HAL_UART_Transmit_IT(&huart2, TxBuffer, strlen((char*)TxBuffer));
 		}

@@ -1,10 +1,10 @@
-03:21:19 **** Build of configuration Debug for project Project Studio3_Position Control ****
+15:03:19 **** Incremental Build of configuration Debug for project Project Studio3_Position Control ****
 make -j16 all 
 arm-none-eabi-size   Project\ Studio3_Position\ Control.elf 
    text	   data	    bss	    dec	    hex	filename
-   9832	     20	   1708	  11560	   2d28	Project Studio3_Position Control.elf
+  15172	     28	   1844	  17044	   4294	Project Studio3_Position Control.elf
 Finished building: default.size.stdout
  
 
-03:21:19 Build Finished. 0 errors, 0 warnings. (took 233ms)
+15:03:19 Build Finished. 0 errors, 0 warnings. (took 241ms)
 

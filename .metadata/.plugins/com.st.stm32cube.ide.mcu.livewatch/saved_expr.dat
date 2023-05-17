@@ -54,3 +54,15 @@ button_press
 on_off
 text
 mode
+start_trapi
+stop_trapi
+Position_trapi
+v_x_trapi
+keep_point_1
+Measure
+Setpoint
+duty
+e
+dT
+T
+T_prev

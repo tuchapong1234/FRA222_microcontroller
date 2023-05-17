@@ -1,24 +1,10 @@
-15:25:06 **** Incremental Build of configuration Debug for project LAB5_UART ****
+20:31:36 **** Incremental Build of configuration Debug for project LAB5_UART ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:82:1: warning: parameter names (without types) in function declaration
-   82 | void select_mode(mode);
-      | ^~~~
-../Core/Src/main.c: In function 'select_mode':
-../Core/Src/main.c:396:6: warning: type of 'mode' defaults to 'int' [-Wimplicit-int]
-  396 | void select_mode(mode)
-      |      ^~~~~~~~~~~
-arm-none-eabi-gcc -o "LAB5_UART.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\LAB5_UART\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB5_UART.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: LAB5_UART.elf
- 
 arm-none-eabi-size   LAB5_UART.elf 
-arm-none-eabi-objdump -h -S  LAB5_UART.elf  > "LAB5_UART.list"
    text	   data	    bss	    dec	    hex	filename
-  19216	    224	   2136	  21576	   5448	LAB5_UART.elf
+  21312	    224	   2136	  23672	   5c78	LAB5_UART.elf
 Finished building: default.size.stdout
  
-Finished building: LAB5_UART.list
- 
 
-15:25:08 Build Finished. 0 errors, 2 warnings. (took 1s.131ms)
+20:31:37 Build Finished. 0 errors, 0 warnings. (took 254ms)
 

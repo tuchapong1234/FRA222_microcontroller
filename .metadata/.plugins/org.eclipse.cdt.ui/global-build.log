@@ -1,104 +1,35 @@
-11:19:55 **** Incremental Build of configuration Debug for project Week12_SPI ****
+23:10:08 **** Incremental Build of configuration Debug for project Project Studio3 ****
 make -j16 all 
-arm-none-eabi-size   Week12_SPI.elf 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core_A/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Project Studio3.elf" @"objects.list"  -l:libarm_cortexM4lf_math.a -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Project Studio3\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Project Studio3.map" -Wl,--gc-sections -static -L../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Lib/GCC --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Project Studio3.elf
+ 
+arm-none-eabi-size   Project\ Studio3.elf 
+arm-none-eabi-objdump -h -S  Project\ Studio3.elf  > "Project Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  10632	     20	   1748	  12400	   3070	Week12_SPI.elf
+  15584	     20	   2076	  17680	   4510	Project Studio3.elf
 Finished building: default.size.stdout
  
-11:33:06 **** Incremental Build of configuration Debug for project Week12_SPI ****
+Finished building: Project Studio3.list
+ 
+23:18:46 **** Incremental Build of configuration Debug for project Project Studio3 ****
 make -j16 all 
-arm-none-eabi-size   Week12_SPI.elf 
+arm-none-eabi-size   Project\ Studio3.elf 
    text	   data	    bss	    dec	    hex	filename
-  10632	     20	   1748	  12400	   3070	Week12_SPI.elf
+  15584	     20	   2076	  17680	   4510	Project Studio3.elf
 Finished building: default.size.stdout
  
-11:42:08 **** Incremental Build of configuration Debug for project Week12_SPI ****
+23:20:18 **** Incremental Build of configuration Debug for project Project Studio3 ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:96:3: warning: implicit declaration of function 'SPITxRx_Setup' [-Wimplicit-function-declaration]
-   96 |   SPITxRx_Setup();
-      |   ^~~~~~~~~~~~~
-../Core/Src/main.c:106:4: warning: implicit declaration of function 'SPITxRx_readIO' [-Wimplicit-function-declaration]
-  106 |    SPITxRx_readIO();
-      |    ^~~~~~~~~~~~~~
-../Core/Src/main.c: At top level:
-../Core/Src/main.c:273:6: warning: conflicting types for 'SPITxRx_Setup'
-  273 | void SPITxRx_Setup()
-      |      ^~~~~~~~~~~~~
-../Core/Src/main.c:96:3: note: previous implicit declaration of 'SPITxRx_Setup' was here
-   96 |   SPITxRx_Setup();
-      |   ^~~~~~~~~~~~~
-../Core/Src/main.c:282:6: warning: conflicting types for 'SPITxRx_readIO'
-  282 | void SPITxRx_readIO()
-      |      ^~~~~~~~~~~~~~
-../Core/Src/main.c:106:4: note: previous implicit declaration of 'SPITxRx_readIO' was here
-  106 |    SPITxRx_readIO();
-      |    ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "Week12_SPI.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Week12_SPI\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Week12_SPI.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Week12_SPI.elf
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core_A/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Project Studio3.elf" @"objects.list"  -l:libarm_cortexM4lf_math.a -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Project Studio3\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Project Studio3.map" -Wl,--gc-sections -static -L../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Lib/GCC --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Project Studio3.elf
  
-arm-none-eabi-size   Week12_SPI.elf 
-arm-none-eabi-objdump -h -S  Week12_SPI.elf  > "Week12_SPI.list"
+arm-none-eabi-size   Project\ Studio3.elf 
+arm-none-eabi-objdump -h -S  Project\ Studio3.elf  > "Project Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  10644	     20	   1748	  12412	   307c	Week12_SPI.elf
+  16632	    124	   2532	  19288	   4b58	Project Studio3.elf
 Finished building: default.size.stdout
  
-Finished building: Week12_SPI.list
- 
-15:14:14 **** Build of configuration Debug for project LAB5_UART ****
-make -j16 all 
-arm-none-eabi-size   LAB5_UART.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19212	    224	   2136	  21572	   5444	LAB5_UART.elf
-Finished building: default.size.stdout
- 
-15:18:36 **** Incremental Build of configuration Debug for project LAB5_UART ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:82:1: warning: parameter names (without types) in function declaration
-   82 | void select_mode(mode);
-      | ^~~~
-../Core/Src/main.c: In function 'select_mode':
-../Core/Src/main.c:396:6: warning: type of 'mode' defaults to 'int' [-Wimplicit-int]
-  396 | void select_mode(mode)
-      |      ^~~~~~~~~~~
-arm-none-eabi-gcc -o "LAB5_UART.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\LAB5_UART\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB5_UART.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: LAB5_UART.elf
- 
-arm-none-eabi-size   LAB5_UART.elf 
-arm-none-eabi-objdump -h -S  LAB5_UART.elf  > "LAB5_UART.list"
-   text	   data	    bss	    dec	    hex	filename
-  19212	    224	   2136	  21572	   5444	LAB5_UART.elf
-Finished building: default.size.stdout
- 
-Finished building: LAB5_UART.list
- 
-15:19:26 **** Incremental Build of configuration Debug for project LAB5_UART ****
-make -j16 all 
-arm-none-eabi-size   LAB5_UART.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19212	    224	   2136	  21572	   5444	LAB5_UART.elf
-Finished building: default.size.stdout
- 
-15:25:06 **** Incremental Build of configuration Debug for project LAB5_UART ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:82:1: warning: parameter names (without types) in function declaration
-   82 | void select_mode(mode);
-      | ^~~~
-../Core/Src/main.c: In function 'select_mode':
-../Core/Src/main.c:396:6: warning: type of 'mode' defaults to 'int' [-Wimplicit-int]
-  396 | void select_mode(mode)
-      |      ^~~~~~~~~~~
-arm-none-eabi-gcc -o "LAB5_UART.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\LAB5_UART\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB5_UART.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: LAB5_UART.elf
- 
-arm-none-eabi-size   LAB5_UART.elf 
-arm-none-eabi-objdump -h -S  LAB5_UART.elf  > "LAB5_UART.list"
-   text	   data	    bss	    dec	    hex	filename
-  19216	    224	   2136	  21576	   5448	LAB5_UART.elf
-Finished building: default.size.stdout
- 
-Finished building: LAB5_UART.list
+Finished building: Project Studio3.list
  

@@ -1,0 +1,626 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2023 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+#include "math.h"
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+UART_HandleTypeDef huart2;
+
+/* USER CODE BEGIN PV */
+
+
+typedef struct
+{
+	float x;
+	float y;
+}point;
+
+//finding_point pv
+point cen_point_1; //input
+point x_point_1;  //input
+point y_point_1;  //input
+float theta_1;   //parameter
+point keep_point_1[9]; //result
+
+point cen_point_2; //input
+point x_point_2;  //input
+point y_point_2;  //input
+float theta_2;   //parameter
+point keep_point_2[9]; //result
+
+int qua;
+
+//trajectory
+  //init
+point start_trapi;
+point stop_trapi;
+
+float V_max_x;
+float V_max_y;
+float A_max_x;
+float A_max_y;
+float start_time;
+  //parameter
+float delta_x;
+float delta_y;
+float side_x=1;
+float side_y=1;
+float t_c_x;
+float t_c_y;
+int x_case = 0;
+int y_case = 0;
+
+float position_1_x=0;
+float position_2_x=0;
+float position_1_y=0;
+float position_2_y=0;
+
+float tb_x_1;
+float tb_x_2;
+float tb_x_3;
+float tb_y_1;
+float tb_y_2;
+float tb_y_3;
+
+
+
+ //output
+point Position_trapi;
+float v_x_trapi;
+float v_y_trapi;
+
+
+
+
+
+
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_USART2_UART_Init(void);
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+
+//defined function point finding
+
+void cal_point();
+void init_cal_point();
+
+void update_trapi(float time_now);
+void cal_trapi(float time_now);
+
+
+/* USER CODE END 0 */
+
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
+  /* USER CODE BEGIN 1 */
+	 init_cal_point();
+
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_USART2_UART_Init();
+  /* USER CODE BEGIN 2 */
+//
+//  cen_point_1.x = 10;
+//  cen_point_1.y = 10;
+//  x_point_1.x = 20.41;
+//  x_point_1.y = -49.08;
+//  y_point_1.x = 59.24;
+//  y_point_1.y = 18.68;
+//
+//  cen_point_2.x = 10;
+//  cen_point_2.y = 10;
+//  x_point_2.x = 20.41;
+//  x_point_2.y = -49.08;
+//  y_point_2.x = 59.24;
+//  y_point_2.y = 18.68;
+//  cal_point();
+  stop_trapi.x = 0;
+  start_trapi.x = 100;
+
+  stop_trapi.y = 0;
+  start_trapi.y = 0;
+
+  V_max_x = 500;
+  A_max_x = 400;
+  start_time = 0;
+  update_trapi(HAL_GetTick()/1000.0);
+
+
+
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  /* USER CODE END WHILE */
+
+	  /* USER CODE BEGIN 3 */
+	  cal_trapi(HAL_GetTick()/1000.0);
+//	  if(Position_trapi.x == 0)
+//	  {
+//		  start_trapi.x = 0;
+//		  stop_trapi.x = 100;
+//		  update_trapi(HAL_GetTick()/1000.0);
+//	  }
+//	  else if(Position_trapi.x == 100)
+//	  {
+//		  start_trapi.x = 100;
+//		  stop_trapi.x = 0;
+//		  update_trapi(HAL_GetTick()/1000.0);
+//	  }
+  }
+  /* USER CODE END 3 */
+}
+
+/**
+  * @brief System Clock Configuration
+  * @retval None
+  */
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+
+  /** Configure the main internal regulator output voltage
+  */
+  __HAL_RCC_PWR_CLK_ENABLE();
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 16;
+  RCC_OscInitStruct.PLL.PLLN = 336;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
+  RCC_OscInitStruct.PLL.PLLQ = 4;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Initializes the CPU, AHB and APB buses clocks
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+/**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOH_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : B1_Pin */
+  GPIO_InitStruct.Pin = B1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : LD2_Pin */
+  GPIO_InitStruct.Pin = LD2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+
+}
+
+/* USER CODE BEGIN 4 */
+
+//CALPOINT_FUNCTION
+void init_cal_point(){
+	  theta_1 = 0;
+	  cen_point_1.x = 0;
+	  cen_point_1.y = 0;
+	  x_point_1.x = 0;
+	  x_point_1.y = 0;
+	  y_point_1.x = 0;
+	  y_point_1.y = 0;
+	  for (int i=0 ;i<9;i++){
+		  keep_point_1[i].x=0;
+		  keep_point_1[i].y=0;
+	  }
+
+	  theta_2 = 0;
+	  cen_point_2.x = 0;
+	  cen_point_2.y = 0;
+	  x_point_2.x = 0;
+	  x_point_2.y = 0;
+	  y_point_2.x = 0;
+	  y_point_2.y = 0;
+	  for (int i = 0 ;i<9;i++){
+	 		  keep_point_2[i].x=0;
+	 		  keep_point_2[i].y=0;
+	 	  }
+}
+
+//function finding point
+void cal_point(){
+	//1
+	x_point_1.x = x_point_1.x - cen_point_1.x;
+	x_point_1.y = x_point_1.y - cen_point_1.y;
+	y_point_1.x = y_point_1.x - cen_point_1.x;
+	y_point_1.y = y_point_1.y - cen_point_1.y;
+
+	x_point_2.x = x_point_2.x - cen_point_2.x;
+	x_point_2.y = x_point_2.y - cen_point_2.y;
+	y_point_2.x = y_point_2.x - cen_point_2.x;
+	y_point_2.y = y_point_2.y - cen_point_2.y;
+
+	if ((x_point_1.y<=60)&&(0<=x_point_1.y)&&(y_point_1.y>=0)){
+		theta_1 = atan(x_point_1.y/x_point_1.x);
+		qua=1;
+
+	}  //q1
+	else if ((x_point_1.y<=60)&&(0<=x_point_1.y)&&(y_point_1.y<=0)){
+		theta_1 = 1.5708 + atan(-x_point_1.x/x_point_1.y);
+		qua=2;
+
+	}  //q2
+	else if ((x_point_1.y<=0)&&(-60<=x_point_1.y)&&(y_point_1.y<=0)){
+		theta_1 = 3.14159 + atan(x_point_1.y/x_point_1.x);
+		qua=3;
+
+	}  //q3
+	else if ((x_point_1.y<=0)&&(-60<=x_point_1.y)&&(y_point_1.y>=0)){
+		theta_1 = 4.71239 + atan(x_point_1.x/-x_point_1.y);
+		qua=4;
+	}  //q4
+	keep_point_1[0].x = 10*cos(theta_1) - 40*sin(theta_1) + cen_point_1.x;
+	keep_point_1[0].y = 10*sin(theta_1) + 40*cos(theta_1) + cen_point_1.y;
+	keep_point_1[1].x = 30*cos(theta_1) - 40*sin(theta_1) + cen_point_1.x;
+	keep_point_1[1].y = 30*sin(theta_1) + 40*cos(theta_1) + cen_point_1.y;
+	keep_point_1[2].x = 50*cos(theta_1) - 40*sin(theta_1) + cen_point_1.x;
+	keep_point_1[2].y = 50*sin(theta_1) + 40*cos(theta_1) + cen_point_1.y;
+
+	keep_point_1[3].x = 10*cos(theta_1) - 25*sin(theta_1) + cen_point_1.x;
+	keep_point_1[3].y = 10*sin(theta_1) + 25*cos(theta_1) + cen_point_1.y;
+	keep_point_1[4].x = 30*cos(theta_1) - 25*sin(theta_1) + cen_point_1.x;
+	keep_point_1[4].y = 30*sin(theta_1) + 25*cos(theta_1) + cen_point_1.y;
+	keep_point_1[5].x = 50*cos(theta_1) - 25*sin(theta_1) + cen_point_1.x;
+	keep_point_1[5].y = 50*sin(theta_1) + 25*cos(theta_1) + cen_point_1.y;
+
+	keep_point_1[6].x = 10*cos(theta_1) - 10*sin(theta_1) + cen_point_1.x;
+	keep_point_1[6].y = 10*sin(theta_1) + 10*cos(theta_1) + cen_point_1.y;
+	keep_point_1[7].x = 30*cos(theta_1) - 10*sin(theta_1) + cen_point_1.x;
+	keep_point_1[7].y = 30*sin(theta_1) + 10*cos(theta_1) + cen_point_1.y;
+	keep_point_1[8].x = 50*cos(theta_1) - 10*sin(theta_1) + cen_point_1.x;
+	keep_point_1[8].y = 50*sin(theta_1) + 10*cos(theta_1) + cen_point_1.y;
+
+	if ((x_point_2.y<=60)&&(0<=x_point_2.y)&&(y_point_2.y>=0)){
+			theta_2 = atan(x_point_2.y/x_point_2.x);
+			qua=1;
+
+		}  //q1
+		else if ((x_point_2.y<=60)&&(0<=x_point_2.y)&&(y_point_2.y<=0)){
+			theta_2 = 1.5708 + atan(-x_point_2.x/x_point_2.y);
+			qua=2;
+
+		}  //q2
+		else if ((x_point_2.y<=0)&&(-60<=x_point_2.y)&&(y_point_2.y<=0)){
+			theta_2 = 3.14159 + atan(x_point_2.y/x_point_2.x);
+			qua=3;
+
+		}  //q3
+		else if ((x_point_2.y<=0)&&(-60<=x_point_2.y)&&(y_point_2.y>=0)){
+			theta_1 = 4.71239 + atan(x_point_2.x/-x_point_2.y);
+			qua=4;
+		}  //q4
+		keep_point_2[0].x = 10*cos(theta_2) - 40*sin(theta_2) + cen_point_2.x;
+		keep_point_2[0].y = 10*sin(theta_2) + 40*cos(theta_2) + cen_point_2.y;
+		keep_point_2[1].x = 30*cos(theta_2) - 40*sin(theta_2) + cen_point_2.x;
+		keep_point_2[1].y = 30*sin(theta_2) + 40*cos(theta_2) + cen_point_2.y;
+		keep_point_2[2].x = 50*cos(theta_2) - 40*sin(theta_2) + cen_point_2.x;
+		keep_point_2[2].y = 50*sin(theta_2) + 40*cos(theta_2) + cen_point_2.y;
+
+		keep_point_2[3].x = 10*cos(theta_2) - 25*sin(theta_2) + cen_point_2.x;
+		keep_point_2[3].y = 10*sin(theta_2) + 25*cos(theta_2) + cen_point_2.y;
+		keep_point_2[4].x = 30*cos(theta_2) - 25*sin(theta_2) + cen_point_2.x;
+		keep_point_2[4].y = 30*sin(theta_2) + 25*cos(theta_2) + cen_point_2.y;
+		keep_point_2[5].x = 50*cos(theta_2) - 25*sin(theta_2) + cen_point_2.x;
+		keep_point_2[5].y = 50*sin(theta_2) + 25*cos(theta_2) + cen_point_2.y;
+
+		keep_point_2[6].x = 10*cos(theta_2) - 10*sin(theta_2) + cen_point_2.x;
+		keep_point_2[6].y = 10*sin(theta_2) + 10*cos(theta_2) + cen_point_2.y;
+		keep_point_2[7].x = 30*cos(theta_2) - 10*sin(theta_2) + cen_point_2.x;
+		keep_point_2[7].y = 30*sin(theta_2) + 10*cos(theta_2) + cen_point_2.y;
+		keep_point_2[8].x = 50*cos(theta_2) - 10*sin(theta_2) + cen_point_2.x;
+		keep_point_2[8].y = 50*sin(theta_2) + 10*cos(theta_2) + cen_point_2.y;
+}
+
+//function tripizoid
+void update_trapi(float time_now){
+	delta_x = stop_trapi.x - start_trapi.x;
+	delta_y = stop_trapi.y - start_trapi.y;
+	if (delta_x<0){
+		side_x = -1;
+		delta_x = delta_x*(-1);
+	}
+	else {side_x=1;}
+	if (delta_y<0){
+		side_y = -1;
+		delta_y = delta_y*(-1);
+	}
+	else {side_y=1;}
+	t_c_x = sqrt(delta_x/A_max_x);
+	t_c_y = sqrt(delta_y/A_max_y);
+
+    // x case
+	if (delta_x==0){
+		x_case = 0;
+	}
+	else if ((A_max_x*t_c_x)>=(V_max_x)){
+		x_case = 2;
+		tb_x_1 = (V_max_x/A_max_x);
+		position_1_x = start_trapi.x+ 0.5*(A_max_x)*tb_x_1*tb_x_1*side_x;
+		tb_x_2 = (((delta_x)-2*(0.5*A_max_x*tb_x_1*tb_x_1))/V_max_x) + tb_x_1;
+		position_2_x = position_1_x + V_max_x*(tb_x_2-tb_x_1)*side_x;
+		tb_x_3 = tb_x_2 + tb_x_1;
+	}
+	else {
+		x_case = 1;
+		tb_x_1 = t_c_x;
+		position_1_x = start_trapi.x + 0.5*(A_max_x)*tb_x_1*tb_x_1*side_x;
+		tb_x_2 = 2*t_c_x;
+	}
+
+	// y case
+		if (delta_y==0){
+			y_case = 0;
+		}
+		else if ((A_max_y*t_c_y)>=(V_max_y)){
+			y_case = 2;
+			tb_y_1 = (V_max_y/A_max_y);
+			tb_y_2 = (((delta_y)-2*(0.5*A_max_y*tb_y_1*tb_y_1))/V_max_y) + tb_y_1;
+			tb_y_3 = tb_y_2 + tb_y_1;
+		}
+		else {
+			y_case = 1;
+			tb_y_1 = t_c_y;
+			tb_y_2 = 2*t_c_y;
+		}
+		start_time = time_now;
+}
+
+
+
+void cal_trapi(float time_now){
+	float trapi_time = time_now - start_time;
+	if (trapi_time < 0){trapi_time=0;}
+	//x generator
+	if (x_case == 0){
+		Position_trapi.x = start_trapi.x;
+		v_x_trapi = 0;
+	}
+	else if (x_case == 1){
+		if ((0<=trapi_time)&&(trapi_time<=tb_x_1)){
+					Position_trapi.x =start_trapi.x+ 0.5*(A_max_x)*trapi_time*trapi_time*side_x;
+					v_x_trapi = A_max_x*trapi_time*side_x;
+				}
+		else if ((tb_x_1<=trapi_time)&&(trapi_time<=tb_x_2)){
+					Position_trapi.x = position_1_x +(A_max_x*tb_x_1*(trapi_time-tb_x_1))-0.5*side_x*(A_max_x*(trapi_time-tb_x_1)*(trapi_time-tb_x_1));
+					v_x_trapi =((A_max_x*tb_x_1)-((trapi_time-tb_x_1)*A_max_x))*side_x;
+				}
+		else if (trapi_time>tb_x_2){
+					Position_trapi.x =stop_trapi.x;
+					v_x_trapi =0;
+				}
+	}
+	else if (x_case == 2){
+		if ((0<=trapi_time)&&(trapi_time<=tb_x_1)){
+							Position_trapi.x =start_trapi.x+ 0.5*(A_max_x)*trapi_time*trapi_time*side_x;
+							v_x_trapi = A_max_x*trapi_time*side_x;
+			}
+		else if ((tb_x_1<=trapi_time)&&(trapi_time<=tb_x_2)){
+							Position_trapi.x = position_1_x + V_max_x*(trapi_time-tb_x_1)*side_x;
+							v_x_trapi = V_max_x*side_x;
+			}
+		else if ((tb_x_2<=trapi_time)&&(trapi_time<=tb_x_3)){
+							Position_trapi.x = position_2_x + V_max_x*(trapi_time-tb_x_2)*side_x - 0.5*side_x*(A_max_x*(trapi_time-tb_x_2)*(trapi_time-tb_x_2));
+							v_x_trapi = (V_max_x-((trapi_time-tb_x_2)*A_max_x))*side_x;
+			}
+		else if (trapi_time>tb_x_3){
+							Position_trapi.x =stop_trapi.x;
+							v_x_trapi =0;
+			}
+		}
+
+	//y generator
+	if (y_case == 0){
+			Position_trapi.y = start_trapi.y;
+			v_y_trapi = 0;
+		}
+	else if (y_case == 1){
+			if ((0<=trapi_time)&&(trapi_time<=tb_y_1)){
+						Position_trapi.y =start_trapi.y+ 0.5*(A_max_y)*trapi_time*trapi_time*side_y;
+						v_y_trapi = A_max_y*trapi_time*side_y;
+					}
+			else if ((tb_y_1<=trapi_time)&&(trapi_time<=tb_y_2)){
+						Position_trapi.y = position_1_y +(A_max_y*tb_y_1*(trapi_time-tb_y_1))-0.5*side_y*(A_max_y*(trapi_time-tb_y_1)*(trapi_time-tb_y_1));
+						v_y_trapi =((A_max_y*tb_y_1)-((trapi_time-tb_y_1)*A_max_y))*side_y;
+					}
+			else if (trapi_time>tb_y_2){
+						Position_trapi.y =stop_trapi.y;
+						v_y_trapi =0;
+					}
+		}
+	else if (y_case == 2){
+			if ((0<=trapi_time)&&(trapi_time<=tb_y_1)){
+								Position_trapi.y =start_trapi.y+ 0.5*(A_max_y)*trapi_time*trapi_time*side_y;
+								v_y_trapi = A_max_y*trapi_time*side_y;
+				}
+			else if ((tb_y_1<=trapi_time)&&(trapi_time<=tb_y_2)){
+								Position_trapi.y = position_1_y + V_max_y*(trapi_time-tb_y_1)*side_y;
+								v_y_trapi = V_max_y*side_y;
+				}
+			else if ((tb_y_2<=trapi_time)&&(trapi_time<=tb_y_3)){
+								Position_trapi.y = position_2_y + V_max_y*(trapi_time-tb_y_2)*side_y - 0.5*side_y*(A_max_y*(trapi_time-tb_y_2)*(trapi_time-tb_y_2));
+								v_y_trapi = (V_max_y - ((trapi_time-tb_y_2)*A_max_y))*side_y;
+				}
+			else if (trapi_time>tb_y_3){
+								Position_trapi.y =stop_trapi.y;
+								v_y_trapi =0;
+				}
+			}
+}
+
+
+/* USER CODE END 4 */
+
+/**
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
+void Error_Handler(void)
+{
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+  __disable_irq();
+  while (1)
+  {
+  }
+  /* USER CODE END Error_Handler_Debug */
+}
+
+#ifdef  USE_FULL_ASSERT
+/**
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
+void assert_failed(uint8_t *file, uint32_t line)
+{
+  /* USER CODE BEGIN 6 */
+  /* User can add his own implementation to report the file name and line number,
+     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+  /* USER CODE END 6 */
+}
+#endif /* USE_FULL_ASSERT */
+

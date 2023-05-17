@@ -1,10 +1,17 @@
-03:21:17 **** Build of configuration Debug for project Project Studio3 ****
+23:20:18 **** Incremental Build of configuration Debug for project Project Studio3 ****
 make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core_A/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Project Studio3.elf" @"objects.list"  -l:libarm_cortexM4lf_math.a -mcpu=cortex-m4 -T"C:\FRA222_microcontroller\Project Studio3\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Project Studio3.map" -Wl,--gc-sections -static -L../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Lib/GCC --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Project Studio3.elf
+ 
 arm-none-eabi-size   Project\ Studio3.elf 
+arm-none-eabi-objdump -h -S  Project\ Studio3.elf  > "Project Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-   9156	     20	   1716	  10892	   2a8c	Project Studio3.elf
+  16632	    124	   2532	  19288	   4b58	Project Studio3.elf
 Finished building: default.size.stdout
  
+Finished building: Project Studio3.list
+ 
 
-03:21:17 Build Finished. 0 errors, 0 warnings. (took 241ms)
+23:20:19 Build Finished. 0 errors, 0 warnings. (took 805ms)
 
